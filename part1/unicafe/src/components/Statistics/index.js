@@ -8,6 +8,9 @@ export default function Statistics({good, bad, neutral}) {
     const [senderState, setSenderState] = useState(false)
 
     const sendClicked = () => {
+        if (!good && !bad && !neutral) {
+            return
+        }
         setSenderState(true)
     }
 
@@ -15,7 +18,10 @@ export default function Statistics({good, bad, neutral}) {
         <>
         {
             senderState === false
-                ?   <button onClick={sendClicked}>send data</button>
+                ?   <>
+                        <button onClick={sendClicked}>send data</button>
+                        <p>no feedback given</p>
+                    </>
                 :   <>
                         <p>all <Total parts={[good, neutral, bad]} /></p>
                         <p>average <Average good={good} bad={bad} neutral={neutral} /></p>
