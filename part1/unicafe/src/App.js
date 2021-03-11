@@ -32,11 +32,13 @@ function App() {
         <Button action={badClicked} text={'bad'} />
       </div>
       <h1>statistics</h1>
-      <Statistic text={'good'} value={good}/>
-      <Statistic text={'neutral'} value={neutral}/>
-      <Statistic text={'bad'} value={bad}/>
+      <table>
+        <Statistic text={'good'} value={good}/>
+        <Statistic text={'neutral'} value={neutral}/>
+        <Statistic text={'bad'} value={bad}/>
 
-      < Statistics good={good} bad={bad} neutral={neutral} />
+        < Statistics good={good} bad={bad} neutral={neutral} />
+      </table>
     </div>
   )
 }

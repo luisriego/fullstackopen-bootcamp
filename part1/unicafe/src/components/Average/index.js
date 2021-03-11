@@ -4,6 +4,6 @@ export default function Average({good, bad, neutral}) {
     const average = (good - bad) / total
 
     return (
-        <>{average}%</>
+        <>{(Math.floor(average * 100) / 100).toFixed(2)}%</>
     )
 }

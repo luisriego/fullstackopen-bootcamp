@@ -23,9 +23,18 @@ export default function Statistics({good, bad, neutral}) {
                         <p>no feedback given</p>
                     </>
                 :   <>
-                        <p>all <Total parts={[good, neutral, bad]} /></p>
-                        <p>average <Average good={good} bad={bad} neutral={neutral} /></p>
-                        <p>positive <Positive good={good} bad={bad} neutral={neutral} /></p>
+                        <tr>
+                            <td>all</td> 
+                            <td><Total parts={[good, neutral, bad]} /></td>
+                        </tr>
+                        <tr>
+                            <td>average</td> 
+                            <td><Average good={good} bad={bad} neutral={neutral} /></td>
+                        </tr>
+                        <tr>
+                            <td>positive</td> 
+                            <td><Positive good={good} bad={bad} neutral={neutral} /></td>
+                        </tr>
                     </>
         }
         </>
