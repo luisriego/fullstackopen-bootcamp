@@ -5,38 +5,31 @@ import Positive from '../Positive';
 import Total from '../Total';
 
 export default function Statistics({good, bad, neutral}) {  
-    const [senderState, setSenderState] = useState(false)
+    // const [senderState, setSenderState] = useState(false)
 
-    const sendClicked = () => {
-        if (!good && !bad && !neutral) {
-            return
-        }
-        setSenderState(true)
-    }
+    // const sendClicked = () => {
+    //     if (!good && !bad && !neutral) {
+    //         return
+    //     }
+    //     setSenderState(true)
+    // }
 
     return (
         <>
-        {
-            senderState === false
-                ?   <>
-                        <button onClick={sendClicked}>send data</button>
-                        <p>no feedback given</p>
-                    </>
-                :   <>
-                        <tr>
-                            <td>all</td> 
-                            <td><Total parts={[good, neutral, bad]} /></td>
-                        </tr>
-                        <tr>
-                            <td>average</td> 
-                            <td><Average good={good} bad={bad} neutral={neutral} /></td>
-                        </tr>
-                        <tr>
-                            <td>positive</td> 
-                            <td><Positive good={good} bad={bad} neutral={neutral} /></td>
-                        </tr>
-                    </>
-        }
+            <tbody>
+                <tr>
+                    <td>all</td> 
+                    <td><Total parts={[good, neutral, bad]} /></td>
+                </tr>
+                <tr>
+                    <td>average</td> 
+                    <td><Average good={good} bad={bad} neutral={neutral} /></td>
+                </tr>
+                <tr>
+                    <td>positive</td> 
+                    <td><Positive good={good} bad={bad} neutral={neutral} /></td>
+                </tr>
+            </tbody>
         </>
       )
 }

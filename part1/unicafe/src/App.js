@@ -9,6 +9,7 @@ function App() {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [senderState, setSenderState] = useState(false)
 
 
   const goodClicked = () => {
@@ -23,6 +24,13 @@ function App() {
     setBad(bad+1)
   }
 
+  const sendClicked = () => {
+    if (!good && !bad && !neutral) {
+        return
+    }
+    setSenderState(true)
+}
+
   return (
     <div>
       <h1>give feddback</h1>
@@ -33,12 +41,25 @@ function App() {
       </div>
       <h1>statistics</h1>
       <table>
-        <Statistic text={'good'} value={good}/>
-        <Statistic text={'neutral'} value={neutral}/>
-        <Statistic text={'bad'} value={bad}/>
-
-        < Statistics good={good} bad={bad} neutral={neutral} />
+        <tbody>
+          <Statistic text={'good'} value={good}/>
+          <Statistic text={'neutral'} value={neutral}/>
+          <Statistic text={'bad'} value={bad}/>
+        </tbody>
+        {
+          senderState 
+            ? < Statistics good={good} bad={bad} neutral={neutral} />
+            : <></>
+        }
       </table>
+      {
+        !senderState
+          ? <>
+              <Button action={sendClicked} text={'send data'} />
+              <p>no feedback given</p>
+            </>
+          : <></>
+      }
     </div>
   )
 }
