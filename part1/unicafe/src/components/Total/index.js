@@ -5,13 +5,13 @@ export default function Total({parts}) {
     useEffect(() => {
       let totalizador = 0
       parts.map((item) =>
-        totalizador = item.exercises + totalizador 
+        totalizador = item + totalizador 
       )
       setTotal(totalizador)
     }, [parts])
     
 
     return (
-        {total}
+        <>{total}</>
       )
 }
