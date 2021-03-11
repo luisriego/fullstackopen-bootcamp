@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Average from './components/Average'
 import Positive from './components/Positive'
+import Statistics from './components/Statistics'
 import Total from './components/Total'
 
 function App() {
@@ -30,13 +31,7 @@ function App() {
         <button onClick={neutralClicked}>neutral</button>
         <button onClick={badClicked}>bad</button>
       </div>
-      <h1>statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all <Total parts={[good, neutral, bad]} /></p>
-      <p>average <Average good={good} bad={bad} neutral={neutral} /></p>
-      <p>positive <Positive good={good} bad={bad} neutral={neutral} /></p>
+      < Statistics good={good} bad={bad} neutral={neutral} />
     </div>
   )
 }
