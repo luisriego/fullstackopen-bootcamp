@@ -1,0 +1,4 @@
+title exercice
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{"Hola a todos/as", date: "2021-03-10T13:24:04.078Z"}, ...]
