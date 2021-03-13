@@ -1,8 +1,8 @@
 import React from 'react'
 
 export const Content = ({parts}) => {
-  const listItems = parts.map((part, i) =>
-    <p key={i}>{part.name} {part.exercises}</p>
+  const listItems = parts.map((part) =>
+    <p key={part.id}>{part.name} {part.exercises}</p>
   );
   return (
     listItems
