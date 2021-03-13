@@ -13,7 +13,7 @@ export default function Total({parts}) {
 
     return (
         <p>
-            Number of exercices {total}
+            <strong>Total of exercices {total}</strong>
         </p>
       )
 }
