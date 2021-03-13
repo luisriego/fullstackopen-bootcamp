@@ -11,7 +11,7 @@ export const Anecdotes = (props) => {
 
     return (
         <>
-            {count(list, needle)}
+            <p>has {count(list, needle)} votes</p>
         </>
     )
 }

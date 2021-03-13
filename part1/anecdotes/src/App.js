@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { randomIntFromInterval } from "./helper"
 import { Anecdotes } from './components/Anecdotes'
+import { FisrtPalceAnecdote } from './components/FirstPlaceAnecdote'
 
 const App = () => {
   const [selected, setSelected] = useState(0)
@@ -30,12 +31,19 @@ const App = () => {
   }
 
   return (
-    <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has <Anecdotes list={anecdotesStored} needle={selected} /> votes</p>
-      <button onClick={voteClicked}>vote</button>
-      <button onClick={nextAnecdote}>next anecdote</button>
-    </div>
+    <>
+      <div>
+        <h2>Anecdote of the day</h2>
+        <p>{anecdotes[selected]}</p>
+        <Anecdotes list={anecdotesStored} needle={selected} />
+        <button onClick={voteClicked}>vote</button>
+        <button onClick={nextAnecdote}>next anecdote</button>
+      </div>
+      <div>
+        <h2>Anecdote with most votes</h2>
+        <FisrtPalceAnecdote list={anecdotesStored} anecdotes={anecdotes} />
+      </div>
+    </>
   )
 }
 
