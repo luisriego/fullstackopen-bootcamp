@@ -14,6 +14,9 @@ const App = () => {
   const submitHandle = (e) => {
     e.preventDefault()
 
+    if (persons.filter(e => e.name === newName).length > 0) {
+      return alert(`${newName} is already added to fonebook`)
+    }
     setPersons([...persons, {name: newName}])
   }
 
