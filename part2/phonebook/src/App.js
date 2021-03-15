@@ -3,12 +3,20 @@ import { Persons } from './components/Persons'
 
 const App = () => {
   const [ persons, setPersons ] = useState([
-    { name: 'Arto Hellas' }
+    { 
+      name: 'Arto Hellas', 
+      number: '12-21-3456789'
+    }
   ]) 
   const [ newName, setNewName ] = useState('')
+  const [ newNumber, setNewNumber ] = useState('')
 
-  const inputChange = (e) => {
+  const nameChange = (e) => {
     setNewName(e.target.value)
+  }
+
+  const numberChange = (e) => {
+    setNewNumber(e.target.value)
   }
 
   const submitHandle = (e) => {
@@ -17,7 +25,8 @@ const App = () => {
     if (persons.filter(e => e.name === newName).length > 0) {
       return alert(`${newName} is already added to fonebook`)
     }
-    setPersons([...persons, {name: newName}])
+
+    setPersons([...persons, {name: newName, number: newNumber}])
   }
 
   return (
@@ -25,7 +34,10 @@ const App = () => {
       <h2>Phonebook</h2>
       <form onSubmit={submitHandle}>
         <div>
-          name: <input type="text" onChange={inputChange}/>
+          name: <input type="text" onChange={nameChange}/>
+        </div>
+        <div>
+          number: <input type="text" onChange={numberChange}/>
         </div>
         <div>
           <button>add</button>
