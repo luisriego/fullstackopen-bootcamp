@@ -1,25 +1,20 @@
 import React from 'react'
+import { CountryDetails } from '../CountryDetails'
 
-export const Country = ({country, match}) => {
+export const Country = ({country, match, setNations}) => {
+    const showHandle = () => {
+        setNations([country])
+    }
+
     if (match) {
-       return <>
-       <h1>{country.name}</h1>
-        capital {country.capital}<br />
-        population {country.population}
-        <h2>languages</h2>
-        <ul>
-            {
-                country.languages.map((language) => {
-                 return <li key={language.iso639_1}>{language.name}</li>
-            })
-            }
-        </ul>
-        <img alt={country.name} src={country.flag}/>
-        </>
+       return (
+           <CountryDetails country={country} />
+       )
+       
     }
     return (
         <div>
-            <p>{country.name}</p>
+            <p>{country.name} <button type="button" onClick={showHandle}>show</button></p>
         </div>
     )
 }

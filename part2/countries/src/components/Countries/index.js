@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Country } from '../Country'
 
 export const Countries = ({countries}) => {
-    const numCountries = countries.length
+    const [nations, setNations] = useState(countries)
+    
+    useEffect(() => {
+        setNations(countries)
+    }, [countries])
 
-    if (numCountries === 0) {
+    if (nations.length === 0) {
         return <p>No match found, specify another filter</p>
     }
 
-    if (numCountries > 10) {
+    if (nations.length > 10) {
         return <p>Too many matches, specify another filter</p>
     }
 
     return (
         <>
-            {   numCountries === 1
-                ? <div><Country country={countries[0]} match={true} /></div>
-                : countries.map((country) => {
-                    return <div key={country.alpha3Code}><Country country={country} match={false} /></div>
+            {   nations.length === 1
+                ? <div><Country country={nations[0]} match={true} /></div>
+                : nations.map((country) => {
+                    return <div key={country.alpha3Code}><Country country={country} match={false} setNations={setNations} /></div>
                 })
             }
         </>
