@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from 'axios'
+
+import { Countries } from "./components/Countries";
+import { Filter } from "./components/Filter";
 
 function App() {
+  useEffect(() => {
+    axios.get('https://restcountries.eu/rest/v2/all')
+      .then(({data}) => {
+        setCountries(data)
+      })
+  }, [])
+  const [countries, setCountries] = useState([])
+  const [search, setSearch] = useState('')
+
+  const searchHandle = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const filter = countries.filter((country) => {
+    return country.name.toLowerCase().includes(search.toLowerCase())
+  })
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Filter searchHandle={searchHandle} />
+      <Countries countries={filter} />
     </div>
   );
 }
