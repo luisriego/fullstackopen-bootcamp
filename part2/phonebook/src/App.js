@@ -4,15 +4,16 @@ import axios from 'axios'
 import { Filter } from './components/Filter'
 import { PersonForm } from './components/PersonForm'
 import { Persons } from './components/Persons'
+import { setPerson } from './services/bd'
 
 const App = () => {
+  const [persons, setPersons] = useState([])
   useEffect(() => {
     axios.get('http://localhost:3001/persons')
       .then(({data}) => {
         setPersons(data)
       })
-  }, [])
-  const [persons, setPersons] = useState([])
+  }, [persons])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [search, setSearch] = useState('')
@@ -32,7 +33,7 @@ const App = () => {
       return alert(`${newName} is already added to fonebook`)
     }
 
-    setPersons([...persons, {name: newName, number: newNumber}])
+    setPerson({name: newName, number: newNumber})
   }
 
   const searchHandle = (e) => {
