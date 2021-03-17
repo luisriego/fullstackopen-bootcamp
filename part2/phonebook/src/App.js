@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 
 import { Filter } from './components/Filter'
 import { PersonForm } from './components/PersonForm'
 import { Persons } from './components/Persons'
-import { setPerson } from './services/bd'
+import { getAll, create } from './services/Persons'
+
 
 const App = () => {
   const [persons, setPersons] = useState([])
-  useEffect(() => {
-    axios.get('http://localhost:3001/persons')
-      .then(({data}) => {
-        setPersons(data)
-      })
-  }, [persons])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [search, setSearch] = useState('')
+  useEffect(() => {
+    getAll().then(({data}) => setPersons(data))
+  }, [persons])
 
   const nameChange = (e) => {
     setNewName(e.target.value)
@@ -33,7 +30,7 @@ const App = () => {
       return alert(`${newName} is already added to fonebook`)
     }
 
-    setPerson({name: newName, number: newNumber})
+    create({name: newName, number: newNumber})
   }
 
   const searchHandle = (e) => {
