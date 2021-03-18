@@ -13,11 +13,14 @@ export const create = ({name, number}) => {
       }) 
 }
 
-export const edit = (id, name, number) => {
-  return axios.put(BASE_URL_API, { id, name, number })
+export const edit = (person) => {
+  return axios.put(`${BASE_URL_API}/${person.id}`, person)
       .then(res => {
         return res.data
-      }) 
+      })
+      .catch(err => {
+        return err
+      })
 }
 
 export const deletePerson = (id) => {
