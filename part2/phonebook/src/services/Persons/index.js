@@ -1,6 +1,8 @@
 import axios from "axios"
 
-const BASE_URL_API = `http://localhost:3001/persons`
+// const BASE_URL_API = `http://localhost:3001/api/persons`
+const BASE_URL_API = 'https://sheltered-gorge-43407.herokuapp.com/api/persons'
+
 
 export const getAll = () => {
     return axios.get(BASE_URL_API)
