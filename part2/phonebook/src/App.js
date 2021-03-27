@@ -58,7 +58,10 @@ const App = () => {
         ])
       })
       .catch(err => {
-        console.log(err)
+        setMessage([
+          `Edited ${err.name}`,
+          'error'
+        ])
       })
   }
 
