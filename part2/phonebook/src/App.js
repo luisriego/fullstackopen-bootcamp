@@ -41,10 +41,7 @@ const App = () => {
     if (actualPerson.length > 0 && actualPerson[0].number !== newNumber) {
       edit({ id: actualPerson[0].id, name: newName, number: newNumber})
         .then(resp => {
-          setMessage([
-            `Edited ${resp.name}`,
-            'success'
-          ])
+          setMessage(resp)
         })
 
       return
@@ -52,12 +49,14 @@ const App = () => {
 
     create({name: newName, number: newNumber})
       .then(resp => {
+        console.log(resp)
         setMessage([
-          `Added ${resp.name}`,
-          'success'
+          resp[0],
+          resp[1]
         ])
       })
       .catch(err => {
+        console.log(err)
         setMessage([
           `Edited ${err.name}`,
           'error'
